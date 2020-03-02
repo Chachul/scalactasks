@@ -1,0 +1,14 @@
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^blog.scalac.io [NC]
+RewriteRule ^(.*)$ http://scalac.io/blog [L,R=301,NC]
+
+AuthName "Password protection"
+AuthUserFile /.htpasswd
+AuthType Basic
+Require valid-user
+
+ErrorDocument 404 /custom-404-error.html
+
+Order allow, deny
+Deny from 3.121.4.52
+Allow from all
